@@ -19,7 +19,7 @@ public class ProductService {
         return productRepository.findAll().stream()
                 .toList();
     }
-    public Product findProductById(Long id) {
+    public Product findProductById(int id) {
         return productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product with ID " + id + " not found."));
     }
@@ -28,7 +28,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public void deleteProduct(Long id) {
+    public void deleteProduct(int id) {
         productRepository.deleteById(id);
     }
 }
