@@ -1,11 +1,18 @@
 package com.pluralsight.northwindtradersspringboot.model;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "Products")
+@JsonPropertyOrder({
+        "productId",
+        "productName",
+        "unitPrice",
+        "category"
+})
 public class Product {
 
     @Id
@@ -16,8 +23,9 @@ public class Product {
     @Column(name = "ProductName")
     private String productName;
 
-    @Column(name = "CategoryID")
-    private int categoryId;
+    @ManyToOne
+    @JoinColumn(name = "CategoryID")
+    private Category category;
 
     @Column(name = "UnitPrice")
     private BigDecimal unitPrice;
@@ -41,12 +49,12 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public BigDecimal getUnitPrice() {
