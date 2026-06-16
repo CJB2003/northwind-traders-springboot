@@ -5,7 +5,6 @@ import com.pluralsight.northwindtradersspringboot.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -24,12 +23,8 @@ public class ProductService {
                 .orElseThrow(() -> new RuntimeException("Product with ID " + id + " not found."));
     }
 
-    public Product addProduct(Long id, Product product) {
-        Product newProduct = findProductById(id);
-        newProduct.setName(product.getName());
-        newProduct.setCategory(product.getCategory());
-        newProduct.setPrice(product.getPrice());
-        return productRepository.save(newProduct);
+    public Product addProduct(Product product) {
+        return productRepository.save(product);
     }
 
     public void deleteProduct(Long id) {

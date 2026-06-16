@@ -1,54 +1,59 @@
 package com.pluralsight.northwindtradersspringboot.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "Products")
 public class Product {
 
     @Id
+    @Column(name = "ProductID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int productId;
 
-    private String name;
+    @Column(name = "ProductName")
+    private String productName;
 
-    private String category;
+    @Column(name = "CategoryID")
+    private int categoryId;
 
-    private BigDecimal price;
+    @Column(name = "UnitPrice")
+    private BigDecimal unitPrice;
 
-    public int getId() {
-        return id;
+    public Product() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getProductId() {
+        return productId;
     }
 
-    public String getName() {
-        return name;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getProductName() {
+        return productName;
     }
 
-    public String getCategory() {
-        return category;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
     }
 }
